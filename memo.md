@@ -103,7 +103,6 @@ jobs:
           command: |
             . venv/bin/activate
             python -m pytest tests/ -v
-
   build:
     <<: *default
     steps:
@@ -114,7 +113,6 @@ jobs:
           command: |
             . venv/bin/activate
             sam build
-
   deploy:
     <<: *default
     steps:
@@ -124,20 +122,21 @@ jobs:
           name: run sam deploy
           command: |
             . venv/bin/activate
+            sam build
             sam deploy
 
 workflows:
   version: 2
-  build_and_test:
+  test_and_build:
     jobs:
       - test
       - build:
           requires:
             - test
+  build_and_deploy:
+    jobs:
       - deploy:
           filters:
             branches:
               only: master
-          requires:
-            - build
 ```
