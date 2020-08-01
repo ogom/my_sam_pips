@@ -34,7 +34,6 @@ jobs:
           command: |
             . venv/bin/activate
             python -m pytest tests/ -v
-
   build:
     <<: *default
     steps:
@@ -45,7 +44,6 @@ jobs:
           command: |
             . venv/bin/activate
             sam build
-
   deploy:
     <<: *default
     steps:
