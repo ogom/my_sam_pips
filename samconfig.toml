@@ -2,9 +2,4 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "my-sam-pips"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-128f92u2xqf55"
-s3_prefix = "my-sam-pips"
-region = "ap-northeast-1"
 capabilities = "CAPABILITY_IAM"
-
