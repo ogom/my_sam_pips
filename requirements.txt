@@ -1,2 +1,3 @@
 pytest
 pytest-mock
+aws-sam-cli

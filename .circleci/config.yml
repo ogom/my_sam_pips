@@ -25,3 +25,8 @@ jobs:
           command: |
             . venv/bin/activate
             python -m pytest tests/ -v
+      - run:
+          name: run sam build
+          command: |
+            . venv/bin/activate
+            sam build
