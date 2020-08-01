@@ -44,7 +44,7 @@ jobs:
           command: |
             . venv/bin/activate
             sam build
-            python manage.py $CIRCLE_BRANCH
+            python manage.py deploy
   deploy:
     <<: *default
     steps:
