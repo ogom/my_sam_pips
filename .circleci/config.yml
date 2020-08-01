@@ -44,7 +44,6 @@ jobs:
           command: |
             . venv/bin/activate
             sam build
-            python manage.py deploy
   deploy:
     <<: *default
     steps:
@@ -55,7 +54,7 @@ jobs:
           command: |
             . venv/bin/activate
             sam build
-            sam deploy
+            python manage.py deploy
 
 workflows:
   version: 2
@@ -70,4 +69,6 @@ workflows:
       - deploy:
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - integrate
