@@ -14,7 +14,17 @@ def main():
     print("Execute Command: {}".format(execute_command))
     print("Git Branch: {}".format(git_branch))
 
-    if execute_command == 'deploy':
+    if execute_command == 'build':
+        if git_branch == 'master':
+            subprocess.run([
+                'sam', 'build',
+                '--template', 'template.prod.yaml',
+            ])
+        elif git_branch == 'integrate':
+            subprocess.run([
+                'sam', 'build',
+            ])
+    elif execute_command == 'deploy':
         if git_branch == 'master':
             subprocess.run([
                 'sam', 'deploy',
@@ -22,6 +32,7 @@ def main():
                 '--s3-bucket', 'aws-sam-cli-managed-default-samclisourcebucket-128f92u2xqf55',
                 '--s3-prefix', 'my-sam-pips',
                 '--region', 'ap-northeast-1',
+                '--template', 'template.prod.yaml',
             ])
         elif git_branch == 'integrate':
             subprocess.run([

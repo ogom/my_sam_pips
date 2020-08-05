@@ -53,7 +53,7 @@ jobs:
           name: run sam deploy
           command: |
             . venv/bin/activate
-            sam build
+            python manage.py build
             python manage.py deploy
 
 workflows:
